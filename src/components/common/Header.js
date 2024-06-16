@@ -16,7 +16,7 @@ const Header = () => {
         <Link to={"/"}>
         <p className="link">Compare</p>
         </Link>
-        <Link to={"/"}>
+        <Link to={"/DashBoard"}>
         <Button text={"DashBoard"} onClick={()=>console.log("button clicked")} />
         </Link>
       </div>

@@ -24,6 +24,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--black);
   overflow-x: hidden;
+  color: white;
 }
 
 h1,

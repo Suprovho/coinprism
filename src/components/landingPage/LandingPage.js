@@ -7,7 +7,7 @@ import { motion } from "framer-motion"
 import { Link } from 'react-router-dom';
 const LandingPage = () => {
   return (
-    <div className="main-flex">
+    <div className="main-flex mt-4">
     <div className="info-landing">
       <motion.h1
         className="heading1 font-bold"
@@ -40,10 +40,10 @@ const LandingPage = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.25, duration: 0.75 }}
       >
-        <Link to="/">
-          <Button text={"Dashboard"} />
+        <Link to="/Dashboard">
+          <Button text={"Dashboard"} onClick={()=>console.log("Dashboard clicked")} />
         </Link>
-          <Button text={"Share App"} outlined={true} />
+          <Button text={"Share"} outlined={true} onClick={()=>console.log("hello share")} />
       </motion.div>
     </div>
     <div className="gradient-div">
