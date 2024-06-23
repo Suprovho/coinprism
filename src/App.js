@@ -3,6 +3,7 @@ import "./App.css";
 import Home from "./pages/Home";
 import Body from "./pages/Body";
 import DashBoard from "./pages/DashBoard";
+import Coin from "./pages/coin";
 
 const appRouter= createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const appRouter= createBrowserRouter([
       {
         path:"/Dashboard",
         element:<DashBoard />,
+      },
+      {
+         path:"/coin/:id",
+         element:<Coin />
       },
     ],
   },

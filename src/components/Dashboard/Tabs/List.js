@@ -2,11 +2,13 @@ import React from "react";
 import TrendingUpRoundedIcon from "@mui/icons-material/TrendingUpRounded";
 import TrendingDownRoundedIcon from "@mui/icons-material/TrendingDownRounded";
 import "../Tabs/List.css"
-import { convertNumber, useConvertNumber } from "../../../hooks/ConvertNumber";
+import { useConvertNumber } from "../../../hooks/ConvertNumber";
 import { Tooltip } from "@mui/material";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 const List = ({ coin,delay }) => {
   return (
+    <Link to={`/coin/${coin.id}`}>
     <motion.tr className="list-row" initial={{ opacity: 0, x: -50 }}
     whileInView={{ opacity: 1, x: 0 }}
     transition={{ duration: 0.5, delay: delay }}>
@@ -77,6 +79,7 @@ const List = ({ coin,delay }) => {
       </Tooltip>
       <td className="mobile text-[#888] text-[1rem] font-medium  sm:hidden">${useConvertNumber(coin.market_cap)}</td>
     </motion.tr>
+    </Link>
   );
 };
 

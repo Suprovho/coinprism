@@ -2,9 +2,11 @@ import React from "react";
 import TrendingUpRoundedIcon from "@mui/icons-material/TrendingUpRounded";
 import TrendingDownRoundedIcon from "@mui/icons-material/TrendingDownRounded";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const Grid = ({ coin, delay }) => {
-  return (
+return (
+  <Link to={`/coin/${coin.id}`}>
     <motion.div
       className={`text-white w-[300px] bg-[#1b1b1b] border-2 border-solid border-[#1b1b1b] h-[300px] cursor-pointer rounded-xl ${
         coin.price_change_percentage_24h > 0
@@ -66,6 +68,7 @@ const Grid = ({ coin, delay }) => {
         </p>
       </div>
     </motion.div>
+    </Link>
   );
 };
 

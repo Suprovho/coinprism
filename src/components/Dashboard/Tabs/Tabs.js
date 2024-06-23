@@ -7,9 +7,10 @@ import { createTheme } from "@mui/material";
 import { ThemeProvider } from "@emotion/react";
 import Grid from "./Grid";
 import List from "./List";
-import "../Tabs/List.css"
+import "../Tabs/List.css";
+import Button from "../../common/Button"
 
-export default function Tabs({coins}) {
+export default function Tabs({ coins, setSearch }) {
   const [value, setValue] = useState("grid");
 
   const handleChange = (event, newValue) => {
@@ -46,20 +47,52 @@ export default function Tabs({coins}) {
         </div>
         <TabPanel value="grid">
           <div className="flex items-start justify-center w-full flex-wrap gap-[1rem]">
-            {
-              coins.map((coin,i)=>{
-                return <Grid key={i} coin={coin} delay={(i % 8) * 0.2} />
+            {coins.length > 0 ? (
+              coins.map((coin, i) => {
+                return <Grid key={i} coin={coin} delay={(i % 8) * 0.2} />;
               })
-            }
+            ) : (
+              <div className="flex justify-center items-center flex-col mt-16 w-full text-wrap">
+                <h1 style={{ textAlign: "center" }}>
+                  Sorry, Couldn't find the coin you're looking for 😞
+                </h1>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems:"center",
+                    margin: "2rem",
+                  }}
+                >
+                  <Button text="Clear Search" onClick={() => setSearch("")} />
+                </div>
+              </div>
+            )}
           </div>
         </TabPanel>
         <TabPanel value="list">
           <table className="list-flex">
-           {
-             coins.map((coin,i)=>{
-              return <List key={i} coin={coin} delay={(i % 8) * 0.2} />
-            })
-           }
+            {coins.length > 0 ? (
+              coins.map((coin, i) => (
+                <List key={i} coin={coin} delay={(i % 8) * 0.2} />
+              ))
+            ) : (
+              <div className="flex justify-center items-center flex-col w-full text-wrap mt-16">
+                <h1 style={{ textAlign: "center" }}>
+                  Sorry, Couldn't find the coin you're looking for 😞
+                </h1>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems:"center",
+                    margin: "2rem",
+                  }}
+                >
+                  <Button text="Clear Search" onClick={() => setSearch("")} />
+                </div>
+              </div>
+            )}
           </table>
         </TabPanel>
       </TabContext>
