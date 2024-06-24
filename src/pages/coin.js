@@ -7,6 +7,10 @@ import CoinInfo from "../components/Coin-page/CoinInfo";
 import { GetCoinData } from "../hooks/useGetCoinData";
 import { getPrices } from "../hooks/useGetCoinPrice";
 import Button from "../components/common/Button";
+import LineChart from "../components/Coin-page/LInechart";
+import { settingChartData } from "../hooks/useChartdata";
+import SelectDays from "../components/Coin-page/SelectDays";
+import TogglePriceComponents from "../components/Coin-page/PriceType";
 
 const Coin = () => {
   const { id } = useParams();
@@ -27,11 +31,31 @@ const Coin = () => {
       settingCoinObject(data, setCoinData);
       const prices = await getPrices(id, days, priceType,setError);
       if (prices) {
-        //   settingChartData(setChartData, prices);
+        settingChartData(setChartData, prices);
         setIsLoading(false);
       }
     }
   }
+
+  const handleDaysChange = async (event) => {
+    setIsLoading(true);
+    setDays(event.target.value);
+    const prices = await getPrices(id, event.target.value, priceType, setError);
+    if (prices) {
+      settingChartData(setChartData, prices);
+      setIsLoading(false);
+    }
+  };
+
+  const handlePriceTypeChange = async (event) => {
+    setIsLoading(true);
+    setPriceType(event.target.value);
+    const prices = await getPrices(id, days, event.target.value, setError);
+    if (prices) {
+      settingChartData(setChartData, prices);
+      setIsLoading(false);
+    }
+  };
 
   return (
     <>
@@ -59,6 +83,11 @@ const Coin = () => {
         <>
           <div className="grey-wrapper">
             <List coin={coinData} delay={0.5} />
+          </div>
+          <div className="grey-wrapper">
+           <SelectDays handleDaysChange={handleDaysChange} days={days} />
+            <TogglePriceComponents priceType={priceType} handlePriceTypeChange={handlePriceTypeChange} />
+            <LineChart chartData={chartData} priceType={priceType}/>
           </div>
           <CoinInfo heading={coinData.name} desc={coinData.desc} />
         </>
