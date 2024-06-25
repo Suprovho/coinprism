@@ -1,34 +1,30 @@
 import React, { useEffect, useState } from "react";
 import Tabs from "../components/Dashboard/Tabs/Tabs";
-import axios from "axios";
-import { API_KEY } from "../utils/constant";
 import Search from "../components/Dashboard/Search/Search";
 import PaginationComponent from "../components/Dashboard/Pagination/Pagination";
 import Loader from "../components/common/Skeleton";
 import TopBottom from "../components/common/TopToBottom";
+import { get100Coins } from "../hooks/Get100coins";
 
 const DashBoard = () => {
   const [coins, setCoins] = useState([]);
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
   const [paginatedCoins, setPaginatedCoins] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    setLoading(true);
-    axios
-      .get(
-        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false",
-        API_KEY
-      )
-      .then((response) => {
-        setCoins(response.data);
-        setPaginatedCoins(response.data.slice(0, 10));
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+   getData();   
   }, []);
+
+  const getData=async()=>{
+    const myCoins=await get100Coins();
+      if (myCoins) {
+         setCoins(myCoins);
+         setPaginatedCoins(myCoins.slice(0, 10));
+         setLoading(false);
+      }
+  }
 
   const onSearchChange = (e) => {
     setSearch(e.target.value);
