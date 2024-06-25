@@ -50,7 +50,7 @@ const LandingPage = () => {
           <RWebShare
             data={{
               text: "Coin prism",
-              url: "https://crypto-dashboard-jan.netlify.app",
+              url: "https://coinprism.netlify.app",
               title: "Coin prism",
             }}
             sites={[
