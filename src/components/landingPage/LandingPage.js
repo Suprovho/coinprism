@@ -6,7 +6,6 @@ import iphone from "../../assets/iphone.png";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { RWebShare } from "react-web-share";
-import { toast } from "react-toastify";
 const LandingPage = () => {
   return (
     <div className="main-flex mt-4">
@@ -54,8 +53,16 @@ const LandingPage = () => {
               url: "https://crypto-dashboard-jan.netlify.app",
               title: "Coin prism",
             }}
-            onClick={() => toast.info("App Shared!")}
-            sites={["facebook","whatsapp","twitter","mail","copy","linkedin","reddit","telegram"]}
+            sites={[
+              "facebook",
+              "whatsapp",
+              "twitter",
+              "mail",
+              "copy",
+              "linkedin",
+              "reddit",
+              "telegram",
+            ]}
           >
             <Button text={"Share"} outlined={true} />
           </RWebShare>

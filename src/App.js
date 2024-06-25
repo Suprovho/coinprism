@@ -6,26 +6,27 @@ import DashBoard from "./pages/DashBoard";
 import Coin from "./pages/coin";
 import Compare from "./pages/Compare";
 
-const appRouter= createBrowserRouter([
+
+const appRouter = createBrowserRouter([
   {
     path: "/",
-    element:<Body />,
-    children:[
+    element: <Body />,
+    children: [
       {
-        path:"/",
-        element:<Home />,
+        path: "/",
+        element: <Home />,
       },
       {
-        path:"/Dashboard",
-        element:<DashBoard />,
+        path: "/Dashboard",
+        element: <DashBoard />,
       },
       {
-         path:"/coin/:id",
-         element:<Coin />
+        path: "/coin/:id",
+        element: <Coin />,
       },
       {
-         path:"/compare",
-         element:<Compare />
+        path: "/compare",
+        element: <Compare />,
       },
     ],
   },
@@ -33,7 +34,9 @@ const appRouter= createBrowserRouter([
 
 function App() {
   return (
-   <RouterProvider router={appRouter} />
+    <>
+        <RouterProvider router={appRouter} />
+    </>
   );
 }
 
