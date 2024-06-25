@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CoinInfo from "../components/Coin-page/CoinInfo";
-import LineChart from "../components/Coin-page/Linechart";
+import LineChart from "../components/Coin-page/LInechart";
 import TogglePriceComponents from "../components/Coin-page/PriceType";
 import Loader from "../components/common/Skeleton";
 import SelectCoins from "../components/Compare/SelectCoins";
