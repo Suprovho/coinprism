@@ -17,10 +17,10 @@ export default function AnchorTemporaryDrawer() {
         <Link to={"/"}>
         <p className="link p-2">Home</p>
         </Link>
-        <Link to={"/"}>
+        <Link to={"/compare"}>
         <p className="link p-2">Compare</p>
         </Link>
-        <Link to={"/"}>
+        <Link to={"/Dashboard"}>
         <p className="link p-2">Dashboard</p>
         </Link>
         </div>
