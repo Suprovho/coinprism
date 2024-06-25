@@ -7,7 +7,7 @@ import CoinInfo from "../components/Coin-page/CoinInfo";
 import { GetCoinData } from "../hooks/useGetCoinData";
 import { getPrices } from "../hooks/useGetCoinPrice";
 import Button from "../components/common/Button";
-import LineChart from "../components/Coin-page/Linechart";
+import LineChart from "../components/Coin-page/LInechart";
 import { settingChartData } from "../hooks/useChartdata";
 import SelectDays from "../components/Coin-page/SelectDays";
 import TogglePriceComponents from "../components/Coin-page/PriceType";
